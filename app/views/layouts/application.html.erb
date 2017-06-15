@@ -9,6 +9,11 @@
   </head>
 
   <body>
+  <% if user_signed_in? %>
+    <div class="text-right">
+  		<%= link_to 'ログアウト',destroy_user_session_path, method: :delete, class: 'btn btn-primary' %>
+	</div>
+  <% end %>
 	  <p class="notice"><%= notice %></p>
 	         <p class="alert"><%= alert %></p>
     <%= yield %>
