@@ -1,0 +1,12 @@
+ja:
+  activerecord:
+    models:
+      product: 製品
+    attributes: 
+      product:
+          name: 名前
+          price: 価格
+          stock: 在庫
+          note: 備考
+          Show: 表示
+          Edit: 編集
