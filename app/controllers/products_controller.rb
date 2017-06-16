@@ -7,11 +7,18 @@ class ProductsController < ApplicationController
     @products = Product.all
   end
 
+  def pay
+	  Payjp.api_key = 'sk_test_5aba5beb2e6f343d45f74f67'
+	  charge = Payjp::Charge.create(
+		  :amount => 3500,
+		  :card => params['payjp-token'],
+		  :currency => 'jpy',
+	  )
+  end
+
   # GET /products/1
   # GET /products/1.json
   def show
-  	@comments = @product.comments.all
-	@comment = @product.comments.build
   end
 
   # GET /products/new

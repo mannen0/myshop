@@ -24,7 +24,10 @@
         <td><%= link_to Product.human_attribute_name(:Edit), edit_product_path(product), class: 'btn btn-primary' %></td>
         <td><%= link_to Product.human_attribute_name(:Destroy), product, method: :delete, data: { confirm: '本当に削除しますか?' },class: 'btn btn-danger' %></td>
       </tr>
-    <% end %>
+  <% end %>
+  <%= form_tag(action: :pay, method: :post) do %>
+	  <script type="text/javascript" src="https://checkout.pay.jp" class="payjp-button" data-key="pk_test_3acb0fd9923ffbffd2bcde84"></script>
+  <% end %>
   </tbody>
 </table>
 </div>
