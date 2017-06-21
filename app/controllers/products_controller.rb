@@ -10,7 +10,7 @@ class ProductsController < ApplicationController
   def pay
 	  Payjp.api_key = 'sk_test_5aba5beb2e6f343d45f74f67'
 	  charge = Payjp::Charge.create(
-		  :amount => 3500,
+		  :amount => Product.sum(:price),
 		  :card => params['payjp-token'],
 		  :currency => 'jpy',
 	  )

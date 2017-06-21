@@ -22,14 +22,30 @@
         <td><%= product.note %></td>
         <td><%= link_to Product.human_attribute_name(:Show), product, class: 'btn btn-primary'%></td>
         <td><%= link_to Product.human_attribute_name(:Edit), edit_product_path(product), class: 'btn btn-primary' %></td>
-        <td><%= link_to Product.human_attribute_name(:Destroy), product, method: :delete, data: { confirm: '本当に削除しますか?' },class: 'btn btn-danger' %></td>
-      </tr>
+		<td><%= link_to Product.human_attribute_name(:Destroy), product, method: :delete, data: { confirm: '本当に削除しますか?' },class: 'btn btn-danger' %></td>
+		<td><%= product.id %></td>
+		<td><%= current_user.id %></td>
+	  </tr>
   <% end %>
-  <%= form_tag(action: :pay, method: :post) do %>
-	  <script type="text/javascript" src="https://checkout.pay.jp" class="payjp-button" data-key="pk_test_3acb0fd9923ffbffd2bcde84"></script>
-  <% end %>
+<% if @products.count != 0 then%>
+  <tr>
+	  <td>
+		  合計
+	  </td>
+	  <td>
+		  <%= @products.sum(:price) %>
+	  </td>
+  </tr>
+  <%end%>
   </tbody>
 </table>
+<% if @products.count != 0 then%>
+	<div class="text-right">
+	  		<%= form_tag(action: :pay, method: :post) do %>
+	  			<script type="text/javascript" src="https://checkout.pay.jp" class="payjp-button" data-key="pk_test_3acb0fd9923ffbffd2bcde84" data-partial="true"></script>
+			<% end %>
+	</div>
+<%end%>
 </div>
 <br>
 
