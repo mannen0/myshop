@@ -60,3 +60,4 @@ gem 'jquery-rails'
 
 gem 'payjp'
 #gem 'jquery-turbolinks'
+gem 'activerecord-session_store'
